@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Boggle</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Montserrat:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <table>
+      <tbody>
+        {% for row in board %}
+        <tr>
+          {% for letter in row %}
+          <td>
+            {{letter}}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <form action="/check-word" autocomplete="off">
+      <input type="text" name="guess" placeholder="Submit Guess"/>
+      <input type="submit" value="guess" id="guess"/>
+    </form>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
