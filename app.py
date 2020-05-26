@@ -22,7 +22,14 @@ def show_board():
 def validate_word():
     word = request.args["guess"]
     board = session["boggle_board"]
-    
+
     response = boggle_game.check_valid_word(board, word) 
 
     return jsonify({'result': response})
+
+@app.route('/score', methods=["POST"])
+def score():
+    score_boolean = request.args["score"]
+
+    if score_boolean is True:
+        session['score'] = session["score"] + 1
