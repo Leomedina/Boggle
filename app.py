@@ -13,8 +13,7 @@ debug = DebugToolbarExtension(app)
 
 @app.route('/')
 def show_board():
-    # session['boggle_board'] = boggle_game.make_board()
-    session['guesses'] = []
+    #session['boggle_board'] = boggle_game.make_board()
     session['score'] = 0
     return render_template('/home.html', board=session['boggle_board'])
 
@@ -27,9 +26,8 @@ def validate_word():
 
     return jsonify({'result': response})
 
-@app.route('/score', methods=["POST"])
+@app.route("/score", methods=["POST"])
 def score():
-    score_boolean = request.args["score"]
+    score = request.args["scpre"]
 
-    if score_boolean is True:
-        session['score'] = session["score"] + 1
+    session['score'] = int(score)
